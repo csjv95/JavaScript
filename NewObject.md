@@ -72,6 +72,11 @@ age.prop = 27;
 age.method = function () {
   console.log(this.prop);
 };
+age.method(); //27
+console.log(age.method()); //27 undefined
+console.log(age.prop); //27
+console.log(age);//[Function: age] { prop: 27, method: [Function] }
 
-age.method(); // 27
+age(); // 일반 함수 호출, Call이 호출
+new age(); // 생성자 함수로써 호출, Construct가 호출
 </pre>
