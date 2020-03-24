@@ -346,4 +346,51 @@ console.log(arr); //[ 1, 0, 0 ]
 </pre>
 
 <li>Array.prototype.includes
+
+ES7에서 새롭게 도입된 includes는  배열 내에 특정 요소가 포함되어 있는지 확인하여 ture 또는 false값을 반환한다
+
+<pre>
+const arr = [1,2,3]; 
+
+console.log(arr.includes(2)); // true 첫번째인수는 찾는값을 입력해주면 찾아서 있으면 true 없으면 false가 반환된다
+console.log(arr.includes(2,2)); // false 두번째인수는 찾는곳의 시작점을 index를 넣어준다
+console.log(arr.includes(2,-1)); // false 음수를 넣으면 length에 -n을 한곳부터 시작점이된다
+</pre>
+
+<li>Array.prototype.flat
+
+ES10에서 새롭게 도입된 flat는 인수로 전달한 깊이 만큼 재귀적으로 배열을 평탄화한다
+
+<pre>
+const arr = [1,[2,3],4,5];
+const arr1 = [1,[2,[3,4],5]];
+
+console.log(arr.flat()); // [ 1, 2, 3, 4, 5 ] 기본값은 1이다
+console.log(arr.flat(1)); // [ 1, 2, 3, 4, 5 ] 중첩배열은 n번 만큼 평탄화 한다
+console.log(arr.flat(Infinity)); [ 1, 2, 3, 4, 5 ] 중첩배열을 Infinity만큼 평탄화 한다
+</pre>
+</ul>
+
+## 배열 고차 함수
+고차 함수는 함수를 인자로 전달받거나 함수를 반환하는 함수를 말할다 자바스크립트의 함수는 일급 객체이므로 값처럼 인자로 전달할 수 있으며 반환할 수도 있다 고차 함수는 외부 상태 변경이나 가변 데이터를 피하고 불변성을 지향하는 함수형 프로그래밍에 기반을 두고 있다
+
+함수형 프로그래밍은 순수 함수와 보조 함수의 조합을 통해 로직 내에 존재하는 조건문과 반복문을 제거하여 복잡성을 해결하고 변수의 사용을 억제하여 상태 변경을 피하려는 프로그래밍 패러다임이다 조건문이나 반복문은 로직의 흐름을 이해하기 어렵게 하여 가독성을 해치고 변수의 값은 누군가에 의해 언제든지 변경될 수 있어 오류 발생의 근본적 원인이 될 수 있기 때문이다 함수형 프로그래밍은 결국 순수 함수를 통해 부수 효과를 최대한 억제하여 오류를 피하고 프로그램의 안정성을 높이려는 노력의 한 방법이라고 할 수 있다
+
+자바스크립트는 고차 함수를 다수 지원 한다 특히 배열은 매우 유용한 고차 함수를 제공하는데 고차함수는 매우 활용 빈도가 높다
+
+<ul>
+<li>Array.prototype.sort
+
+sort는 배열의 요소를 정렬하는데 원본 배열을 직접 변경하며 정렬된 배열을 반환한다(기본적으로 오름차순으로 요소를 정렬한다)
+
+<pre>
+const fruits = ['orange','banna','apple'];
+
+fruits.sort(); //오름차순으로 정렬된다
+console.log(fruits); // [ 'apple', 'banna', 'orange' ]
+
+fruits.reverse(); // 오름 차순으로 정렬을 하고 reverse를 사용하면 내림차순으로 정렬이 되는걸 볼수있다
+console.log(fruits); // [ 'orange', 'banna', 'apple' ]
+</pre>
+
 </ul>
