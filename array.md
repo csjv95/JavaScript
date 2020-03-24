@@ -285,9 +285,65 @@ console.log(remove(arr, 2)); // [ 1, 3, 1, 2 ]
 console.log(remove(arr, 10)); // [ 1, 3, 1, 2 ]
 </pre>
 
+<li>Array.prototype.slice
+slice는 2개의 매개변수를 가지며 인수로 전달된 범위의 요소들을 복사하여 반환하다(원본배열 변경하지 않는다)  
 
-<li>
-<li>
-<li>
+start => 복사를 시작할 인덱스이다 음수의 경우 끝에서 인덱스를 나타낸다 예를 들어 slice(-3)은 배열의 마지막 3개의 요소를 반환한다
 
+end = > 복사를 종료할 인덱스이다 인덱스에 해당하는 요소는 복사되지 않으며 옶션이며 기본값은 length 값이다
+
+<pre>
+const arr = [1,2,3];
+
+const result = arr.slice(0,2);
+
+console.log(result); //[1,2] 0에서부터 2번쨰 인덱스 앞까지 
+console.log(arr); [1,2,3]
+</pre>
+얕은 복사와 깊은 복사
+객체를 프로퍼티 값으로 같는 경우 얕은 복사는 한 단계까지만 복사하는 것을 말하고 깊은 복사는 객체에 중첩되어 있는 객체까지 모두 복사하는 것을 말한다
+얕은 복사와 깊은 복사로 생성된 객체는 원본과는 다른 객체이다 원본과 복사본은 <stong>참조값</strong>이 다른 별개의 객체이다 하지만 얕은 복사는 객체에 중첩되어 있는 객체의 경우 참조값을 복사하고 깊은 복사는 객체에 중첩되어 있는 객체까지 모두 복사하여 원시 값처럼 안전한 복사본을 만드는 차이가 있다
+
+<li>Array.prototype.join
+
+join은 원본 배열의 모든 요소를 문자열로 변환한 후 인수로 전달받은 값 즉 구분자로 연결한 문자열을 반환하며 구분자는 생략 가능하며 기본 구분자는 ','이다
+<pre>
+const arr = [1,2,3,4];
+
+let result = arr.join(); //기본 구분자는 ,
+console.log(result); // 1,2,3,4
+
+result = arr.join(':');// :
+console.log(result); // 1:2:3:4
+</pre>
+
+<li>Array.prototype.reverse
+
+reverse는 원본 배열의 요소 순서를 반대로 변경해야한다(원본배열이 변경된다)반환값은 변경된 배열이다
+<pre>
+const arr = [1,2,3];
+const result = arr.reverse();
+
+console.log(result); [3,2,1]
+console.log(arr); // [3,2,1] 원본값이 변경된다
+</pre>
+
+<li>Array.prototype.fill
+
+ES6에서 새롭게 도입된 fill은 인수로 전달 받은 값을 요소로 배열의 처음부터 끝까지 채운다(원본에 배열이 변경된다)
+
+<pre>
+const arr =[1,2,3];
+
+arr.fill('Hi'); // 첫번째 인수로 전달 받은 값을 요소로 배열의 처음부터 끝까지 채운다
+console.log(arr); // [ 'hi', 'hi', 'hi' ]
+
+arr.fill(0,1); // 두번쨰는 요소 채우기를 시작 인덱스를 정할수있다
+console.log(arr); // [ 'Hi', 0, 0 ] index 1부터 0으로 채우기
+
+arr.fill(1,0,1);// 세번째는 요소 채우기를 멈출 인덱스를 정할수있다
+console.log(arr); //[ 1, 0, 0 ]
+</pre>
+
+<li>Array.prototype.includes
 </ul>
